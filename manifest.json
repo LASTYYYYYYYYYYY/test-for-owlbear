@@ -1,15 +1,15 @@
 {
-  "name": "Test Extension",
+  "name": "Resize Tokens",
   "version": "1.0.0",
   "manifest_version": 1,
   "author": "LASTYYYYYYYYYYY",
   "icon": "/icon.png",
-  "homepage_url": "https://github.com/LASTYYYYYYYYYYY/test-for-owlbear",
+  "description": "Resize selected tokens",
   "action": {
-    "title": "Test Extension",
+    "title": "Resize Tokens",
     "icon": "/icon.png",
     "popover": "/index.html",
-    "height": 600,
-    "width": 400
+    "height": 200,
+    "width": 300
   }
 }
