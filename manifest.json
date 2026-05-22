@@ -1,16 +1,19 @@
 {
+  "manifest_version": 1,
   "name": "Resize Tokens",
   "version": "1.0.0",
-  "manifest_version": 1,
   "author": "LASTYYYYYYYYYYY",
-  "icon": "https://lastyyyyyyyyyyy.github.io/test-for-owlbear/icon.png",
+
+  "icon": "/icon.png",
+
   "action": {
     "title": "Resize Tokens",
-    "icon": "https://lastyyyyyyyyyyy.github.io/test-for-owlbear/icon.png",
-    "popover": {
-      "url": "/test-for-owlbear/index.html",
-      "width": 400,
-      "height": 300
-    }
+
+    "icon": "/icon.png",
+
+    "popover": "/index.html",
+
+    "height": 300,
+    "width": 400
   }
 }
