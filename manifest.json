@@ -3,12 +3,11 @@
   "version": "1.0.0",
   "manifest_version": 1,
   "author": "LASTYYYYYYYYYYY",
-  "icon": "icon.png",
-  "description": "Resize selected tokens",
+  "icon": "https://lastyyyyyyyyyyy.github.io/test-for-owlbear/icon.png",
   "action": {
     "title": "Resize Tokens",
-    "icon": "icon.png",
-    "url": "index.html",
+    "icon": "https://lastyyyyyyyyyyy.github.io/test-for-owlbear/icon.png",
+    "popover": "https://lastyyyyyyyyyyy.github.io/test-for-owlbear/index.html",
     "height": 300,
     "width": 400
   }
