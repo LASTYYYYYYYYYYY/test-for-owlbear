@@ -3,12 +3,12 @@
   "version": "1.0.0",
   "manifest_version": 1,
   "author": "LASTYYYYYYYYYYY",
-  "icon": "/icon.png",
+  "icon": "icon.png",
   "description": "Resize selected tokens",
   "action": {
     "title": "Resize Tokens",
-    "icon": "/icon.png",
-    "url": "/index.html",
+    "icon": "icon.png",
+    "url": "index.html",
     "height": 300,
     "width": 400
   }
