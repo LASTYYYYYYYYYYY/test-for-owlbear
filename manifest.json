@@ -1,0 +1,10 @@
+{
+  "name": "Token Rings",
+  "version": "1.0.0",
+  "manifest_version": 1,
+  "author": "ChatGPT",
+  "action": {
+    "title": "Token Rings",
+    "popover": "/index.html"
+  }
+}
