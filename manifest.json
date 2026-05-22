@@ -1,10 +1,15 @@
 {
-  "name": "Token Rings",
+  "name": "Test Extension",
   "version": "1.0.0",
   "manifest_version": 1,
-  "author": "ChatGPT",
+  "author": "LASTYYYYYYYYYYY",
+  "icon": "/icon.png",
+  "homepage_url": "https://github.com/LASTYYYYYYYYYYY/test-for-owlbear",
   "action": {
-    "title": "Token Rings",
-    "popover": "/index.html"
+    "title": "Test Extension",
+    "icon": "/icon.png",
+    "popover": "/index.html",
+    "height": 600,
+    "width": 400
   }
 }
