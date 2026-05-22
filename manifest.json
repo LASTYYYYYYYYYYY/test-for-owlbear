@@ -8,11 +8,8 @@
   "action": {
     "title": "Resize Tokens",
     "icon": "https://lastyyyyyyyyyyy.github.io/test-for-owlbear/icon.png",
-
-    "popover": {
-      "url": "https://lastyyyyyyyyyyy.github.io/test-for-owlbear/index.html",
-      "height": 300,
-      "width": 400
-    }
+    "popover": "/test-for-owlbear/index.html",
+    "height": 300,
+    "width": 400
   }
 }
