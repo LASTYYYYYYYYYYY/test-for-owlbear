@@ -1,79 +1,47 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html>
 <head>
-  <meta charset="UTF-8" />
-
-  <!-- ВАЖНО для GitHub Pages -->
-  <base href="/test-for-owlbear/">
-
-  <title>Resize Tokens</title>
-
-  <style>
-    body {
-      font-family: sans-serif;
-      padding: 12px;
-      background: #1e1e1e;
-      color: white;
-    }
-
-    button {
-      width: 100%;
-      padding: 10px;
-      font-size: 16px;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="UTF-8">
+  <title>Resize</title>
 </head>
 
 <body>
 
-  <h3>Resize Selected Tokens</h3>
+<button id="btn">
+Resize
+</button>
 
-  <button id="resize">
-    Сделать 100x100
-  </button>
+<script type="module">
 
-  <script type="module">
-    import OBR from "https://unpkg.com/@owlbear-rodeo/sdk@latest/dist/index.mjs";
+import OBR from "https://unpkg.com/@owlbear-rodeo/sdk@latest/dist/index.mjs";
 
-    async function resizeSelected() {
+OBR.onReady(() => {
 
-      const items = await OBR.scene.items.getItems();
+  document.getElementById("btn").onclick = async () => {
 
-      const selected = items.filter(item => item.selected);
+    const items = await OBR.scene.items.getItems();
 
-      if (selected.length === 0) {
-        alert("Выдели токены");
-        return;
-      }
+    const selected = items.filter(i => i.selected);
 
-      await OBR.scene.items.updateItems(
-        selected.map(i => i.id),
-        items => {
+    await OBR.scene.items.updateItems(
+      selected.map(i => i.id),
+      items => {
 
-          for (const item of items) {
+        for (const item of items) {
 
-            if (item.image) {
-              item.image.width = 100;
-              item.image.height = 100;
-            }
-
-          }
+          item.scale.x = 2;
+          item.scale.y = 2;
 
         }
-      );
 
-      alert("Размер изменён");
-    }
+      }
+    );
 
-    OBR.onReady(() => {
+  };
 
-      document
-        .getElementById("resize")
-        .addEventListener("click", resizeSelected);
+});
 
-    });
-  </script>
+</script>
 
 </body>
 </html>
