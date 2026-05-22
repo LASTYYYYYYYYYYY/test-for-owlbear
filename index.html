@@ -1,143 +1,44 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<title>Token Rings</title>
+  <meta charset="UTF-8" />
+  <title>Resize Tokens</title>
 
-<style>
-body {
-  margin: 0;
-  padding: 10px;
-  background: #1e1e1e;
-  font-family: sans-serif;
-}
+  <script type="module">
+    import OBR from "https://unpkg.com/@owlbear-rodeo/sdk@latest/dist/index.mjs";
 
-button {
-  width: 100%;
-  padding: 10px;
-  margin-top: 8px;
-  border: none;
-  border-radius: 8px;
-  color: white;
-  font-weight: bold;
-  cursor: pointer;
-}
+    async function resizeSelected() {
+      const items = await OBR.scene.items.getItems();
 
-.red { background: #ff4d4d; }
-.green { background: #2ecc71; }
-.blue { background: #3498db; }
-</style>
-</head>
+      const selected = items.filter(item => item.selected);
 
-<body>
-
-<button class="red" id="red">Red Ring</button>
-<button class="green" id="green">Green Ring</button>
-<button class="blue" id="blue">Blue Ring</button>
-
-<script type="module">
-
-import OBR from "https://unpkg.com/@owlbear-rodeo/sdk@4.3.0/dist/index.mjs";
-
-const EXT = "com.simple.rings";
-
-async function createRing(color) {
-
-  const selection = await OBR.player.getSelection();
-
-  if (!selection.length) {
-    alert("Select token");
-    return;
-  }
-
-  const items = await OBR.scene.items.getItems(
-    item => selection.includes(item.id)
-  );
-
-  for (const token of items) {
-
-    if (!token.image) continue;
-
-    const size =
-      Math.max(
-        token.image.width,
-        token.image.height
-      ) + 24;
-
-    const svg = `
-    <svg xmlns="http://www.w3.org/2000/svg"
-    width="${size}"
-    height="${size}">
-      <circle
-        cx="${size / 2}"
-        cy="${size / 2}"
-        r="${size / 2 - 8}"
-        fill="none"
-        stroke="${color}"
-        stroke-width="10"
-      />
-    </svg>`;
-
-    const ring = {
-
-      id: crypto.randomUUID(),
-
-      createdUserId: token.createdUserId,
-
-      name: "Ring",
-
-      visible: true,
-
-      locked: false,
-
-      layer: "DRAWING",
-
-      position: token.position,
-
-      rotation: token.rotation,
-
-      scale: { x: 1, y: 1 },
-
-      image: {
-        width: size,
-        height: size,
-        mime: "image/svg+xml",
-        url:
-          "data:image/svg+xml;utf8," +
-          encodeURIComponent(svg)
-      },
-
-      grid: {
-        dpi: 150,
-        offset: { x: 0, y: 0 }
-      },
-
-      metadata: {
-        [EXT + "/token"]: token.id
+      if (selected.length === 0) {
+        alert("Выдели токены");
+        return;
       }
 
-    };
+      await OBR.scene.items.updateItems(
+        selected.map(i => i.id),
+        items => {
+          for (const item of items) {
+            item.image.width = 100;
+            item.image.height = 100;
+          }
+        }
+      );
+    }
 
-    await OBR.scene.items.addItems([ring]);
+    OBR.onReady(() => {
+      document
+        .getElementById("resize")
+        .addEventListener("click", resizeSelected);
+    });
+  </script>
+</head>
 
-  }
-
-}
-
-document.getElementById("red")
-.onclick = () => createRing("#ff0000");
-
-document.getElementById("green")
-.onclick = () => createRing("#00ff88");
-
-document.getElementById("blue")
-.onclick = () => createRing("#0099ff");
-
-OBR.onReady(() => {
-  console.log("Extension Ready");
-});
-
-</script>
-
+<body style="font-family:sans-serif;padding:10px;">
+  <button id="resize">
+    Сделать 100x100
+  </button>
 </body>
 </html>
