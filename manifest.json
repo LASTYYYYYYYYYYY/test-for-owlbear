@@ -7,7 +7,7 @@
   "action": {
     "title": "Resize Tokens",
     "icon": "https://lastyyyyyyyyyyy.github.io/test-for-owlbear/icon.png",
-    "popover": "https://lastyyyyyyyyyyy.github.io/test-for-owlbear/index.html",
+    "url": "https://lastyyyyyyyyyyy.github.io/test-for-owlbear/index.html",
     "height": 300,
     "width": 400
   }
