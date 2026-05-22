@@ -1,13 +1,43 @@
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 <head>
   <meta charset="UTF-8" />
+
+  <!-- ВАЖНО для GitHub Pages -->
+  <base href="/test-for-owlbear/">
+
   <title>Resize Tokens</title>
+
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 12px;
+      background: #1e1e1e;
+      color: white;
+    }
+
+    button {
+      width: 100%;
+      padding: 10px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+
+<body>
+
+  <h3>Resize Selected Tokens</h3>
+
+  <button id="resize">
+    Сделать 100x100
+  </button>
 
   <script type="module">
     import OBR from "https://unpkg.com/@owlbear-rodeo/sdk@latest/dist/index.mjs";
 
     async function resizeSelected() {
+
       const items = await OBR.scene.items.getItems();
 
       const selected = items.filter(item => item.selected);
@@ -20,25 +50,30 @@
       await OBR.scene.items.updateItems(
         selected.map(i => i.id),
         items => {
+
           for (const item of items) {
-            item.image.width = 100;
-            item.image.height = 100;
+
+            if (item.image) {
+              item.image.width = 100;
+              item.image.height = 100;
+            }
+
           }
+
         }
       );
+
+      alert("Размер изменён");
     }
 
     OBR.onReady(() => {
+
       document
         .getElementById("resize")
         .addEventListener("click", resizeSelected);
+
     });
   </script>
-</head>
 
-<body style="font-family:sans-serif;padding:10px;">
-  <button id="resize">
-    Сделать 100x100
-  </button>
 </body>
 </html>
